@@ -2,6 +2,7 @@
 description: >-
   Welcome to my GitBook pages. These pages are a handy guide to help you install
   Waydroid on openSUSE.
+icon: android
 ---
 
 # Waydroid on openSUSE
@@ -20,8 +21,3 @@ Before reading this guide, make sure you have fulfilled the requirements below o
 * For stability, I recommend that you install the `kernel-longterm` or LTS kernel for long-term use (But if you want to use `kernel-default` or Default SUSE kernel, it's your choice).
 
 After making sure you're following the requirements above, you can proceed it for installation. These pages have severe sub-pages for installation and troubleshooting while running Waydroid on your openSUSE systems.
-
-
-
-
-

@@ -3,6 +3,7 @@ description: >-
   These sub-pages on the installation pages are the installation guide for
   Tumbleweed and Slowroll users. Be careful following this guide, and make sure
   to follow the guide carefully.
+icon: sign-posts-wrench
 ---
 
 # Installation on Tumbleweed and Slowroll
@@ -49,11 +50,11 @@ The next steps are installing AppArmor and SELinux. For these steps, you can use
 sudo zypper in -y patterns-base-apparmor patterns-base-selinux
 ```
 
-After that, it will install AppArmor and SELinux automatically. You can reboot your systems if you want after installation is completed.
+After that, it will automatically install AppArmor and SELinux. You can reboot your system after installation is complete.
 
 ## Adding JWR repositories to your systems
 
-These steps are adding my own maintained Waydroid repository called Jim Waydroid Repository (JWR), which is required for installing Waydroid on your systems. Follow these steps below to add repositories.
+These steps involve adding my own maintained Waydroid repository, called Jim Waydroid Repository (JWR), which is required for installing Waydroid on your system. Follow these steps below to add repositories.
 
 <pre class="language-sh"><code class="lang-sh"># Add the repositories for Tumbleweed and refresh the repositories lists
 <strong>sudo zypper ar -f https://raw.githubusercontent.com/jimed-rand/waydroid-obs-repo/refs/heads/main/repo/tumbleweed/jim-waydroid.repo
@@ -68,6 +69,19 @@ These steps are adding my own maintained Waydroid repository called Jim Waydroid
 
 After adding JWR repositories, you can install it. Before installing Waydroid, make sure you're in a Wayland session on your desktop environment. If you're on X11, you need a Wayland compositor such as `weston` or `cage`. Follow these steps below to install it.
 
+```sh
+# Install it directly if you're on Wayland session
+sudo zypper in waydroid
+
+# Install it with Wayland compositor if you're on X11 session
+sudo zypper in waydroid cage # If you want to use Cage
+sudo zypper in waydroid weston # If you want to use Weston
 ```
-# 
+
+After installation is completed, you need to enable the Waydroid container service.
+
+```sh
+sudo systemctl enable --now waydroid-container
 ```
+
+The last step for installing Waydroid is&#x20;
