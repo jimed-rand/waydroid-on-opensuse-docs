@@ -1,12 +1,12 @@
 ---
 description: >-
   These sub-pages on the installation pages are the installation guide for
-  Tumbleweed and Slowroll users. Be careful following this guide, and make sure
-  to follow the guide carefully.
+  Tumbleweed, Slowroll, and Leap 16.0 users. Be careful following this guide,
+  and make sure to follow the guide carefully.
 icon: sign-posts-wrench
 ---
 
-# Installation on Tumbleweed and Slowroll
+# Installation on Tumbleweed, Slowroll, and Leap 16.0
 
 ## Add the PSI argument to the GRUB configuration
 
@@ -38,7 +38,7 @@ After you've found `GRUB_CMDLINE_LINUX_DEFAULT` arguments, make changes with an 
 GRUB_CMDLINE_LINUX_DEFAULT="mitigations=auto quiet security=apparmor psi=1"
 ```
 
-After that, you need to apply the changes by refreshing the GRUB configuration file (use this command `grub2-mkconfig -o /boot/grub2/grub.cfg` to refresh the GRUB configuration) and reboot your systems after making these changes.
+After that, you need to apply the changes by refreshing the GRUB configuration file (use these commands `sudo grub2-mkconfig -o /boot/grub2/grub.cfg` to refresh the GRUB configuration) and reboot your systems after making these changes.
 
 ## Installing AppArmor and SELinux
 
@@ -63,7 +63,11 @@ These steps involve adding my own maintained Waydroid repository, called Jim Way
 </strong><strong># Add the repositories for Slowroll and refresh the repositories lists
 </strong><strong>sudo zypper ar -f  https://raw.githubusercontent.com/jimed-rand/waydroid-obs-repo/refs/heads/main/repo/slowroll/jim-waydroid.repo
 </strong><strong>sudo zypper refresh --gpg-auto-import-keys
-</strong></code></pre>
+</strong><strong>
+</strong># Add the repositories for Leap 16.0 and refresh the repositories lists
+sudo zypper ar -f  https://raw.githubusercontent.com/jimed-rand/waydroid-obs-repo/refs/heads/main/repo/leap-16.0/jim-waydroid.repo
+sudo zypper refresh --gpg-auto-import-keys
+</code></pre>
 
 ## Installing Waydroid
 
@@ -84,4 +88,37 @@ After installation is completed, you need to enable the Waydroid container servi
 sudo systemctl enable --now waydroid-container
 ```
 
-The last step for installing Waydroid is&#x20;
+The last step for installing Waydroid is adding WayDroid permission config on AppArmor. Follow these steps below to add it.
+
+```sh
+# Open configuration file from /etc/apparmor.d/usr.sbin.dnsmasq
+sudo nano /etc/apparmor.d/usr.sbin.dnsmasq
+
+# Then, you'll see the file like the image below
+```
+
+<figure><img src="../.gitbook/assets/Jepretan layar_20250619_070046.png" alt=""><figcaption><p>AppArmor permission config file</p></figcaption></figure>
+
+<pre class="language-sh"><code class="lang-sh"># You need to find a permission config section like below
+  # waydroid lxc-net pid file
+  @{run}/waydroid-lxc/dnsmasq.pid rw,
+
+# After finding it, add the permission config into the section like this
+  # waydroid lxc-net pid file
+  @{run}/waydroid-lxc/dnsmasq.pid rw,
+  @{run}/waydroid-lxc/ r,
+<strong>  @{run}/waydroid-lxc/* rw,
+</strong></code></pre>
+
+After that, save it. Also, make sure you have followed the installation entirely, and Waydroid has been installed with the check app menu. After checking and it's installed correctly, congrats! You should restart your PC/laptop after following this installation step to make Waydroid work on your system.
+
+## Applying firewall rules for Internet access inside Waydroid
+
+These steps are important for accessing the Internet inside Waydroid. Before initiating Waydroid, you need to apply the firewall rules `firewalld` permanently. Also, before applying firewall rules, you need to check them by typing `ip addr show` and make sure the protocols `waydroid0` are available. If protocols `waydroid0` are available, you can apply them. Follow these steps to apply it.
+
+```sh
+# Apply firewall rules with these commands
+sudo firewall-cmd --zone=trusted --add-interface=waydroid0 --permanent
+```
+
+If the showing "success", the firewall rules have been applied and you can access the Internet inside Waydroid.
