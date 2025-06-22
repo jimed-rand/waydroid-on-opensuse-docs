@@ -24,7 +24,11 @@ ANDROID_RUNTIME_ROOT=/apex/com.android.runtime ANDROID_DATA=/data ANDROID_TZDATA
 
 ## Register the GSF ID on Google's server
 
-Once you've got your GSF ID, \[click this]\([https://www.google.com/android/uncertified](https://www.google.com/android/uncertified)) to register it with Google's server. Just make sure you've logged in to your account before submitting it.
+Once you've got your GSF ID, <a href="https://www.google.com/android/uncertified" class="button secondary" data-icon="android">Click here to register it</a> with Google's server. Just make sure you've logged in to your account before submitting it. You will see the pages like these.
+
+<figure><img src=".gitbook/assets/Jepretan layar_20250622_174815.png" alt=""><figcaption><p>Google's Android devices GSF registration pages</p></figcaption></figure>
+
+Submit the code on the websites, solve the Captcha, and click **Register**. After that, your GSF ID is registered and you need to wait for a while (max 1 hours to wait). Also, stop the Waydroid session for now. After waiting time, try to start again your Waydroid session and if there's no more annoying notification sound, congrats! Now you can log in your Google account there and you can experience Waydroid with Google Play enabled.
 
 
 
