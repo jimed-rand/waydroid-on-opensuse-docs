@@ -13,3 +13,4 @@
 ***
 
 * [GAPPS Registration](gapps-registration.md)
+* [Add the ARM translation layer for Waydroid](add-the-arm-translation-layer-for-waydroid.md)
