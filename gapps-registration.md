@@ -24,9 +24,7 @@ ANDROID_RUNTIME_ROOT=/apex/com.android.runtime ANDROID_DATA=/data ANDROID_TZDATA
 
 ## Register the GSF ID on Google's server
 
-Once you've got your GSF ID, go to the website below to register it with Google's server. Just make sure you've logged in to your account before submitting it.
-
-{% embed url="https://www.google.com/android/uncertified" %}
+Once you've got your GSF ID, \[click this]\([https://www.google.com/android/uncertified](https://www.google.com/android/uncertified)) to register it with Google's server. Just make sure you've logged in to your account before submitting it.
 
 
 
