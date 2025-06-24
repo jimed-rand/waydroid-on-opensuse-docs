@@ -6,7 +6,7 @@ description: >-
 icon: sign-posts-wrench
 ---
 
-# Installation on Tumbleweed, Slowroll, and Leap 16.0
+# Installation
 
 ## Add the PSI argument to the GRUB configuration
 
@@ -57,17 +57,18 @@ After that, it will automatically install AppArmor and SELinux. You can reboot y
 These steps involve adding my own maintained Waydroid repository, called Jim Waydroid Repository (JWR), which is required for installing Waydroid on your system. Follow these steps below to add repositories.
 
 <pre class="language-sh"><code class="lang-sh"># Add the repositories for Tumbleweed and refresh the repositories lists
-<strong>sudo zypper ar -f https://raw.githubusercontent.com/jimed-rand/waydroid-obs-repo/refs/heads/main/repo/tumbleweed/jim-waydroid.repo
-</strong><strong>sudo zypper refresh --gpg-auto-import-keys
+<strong>sudo zypper ar -f https://raw.githubusercontent.com/jimed-rand/waydroid-obs-repo/refs/heads/main/repo/tumbleweed/jim-waydroid.repo &#x26;&#x26; sudo zypper ref 
 </strong><strong>
 </strong><strong># Add the repositories for Slowroll and refresh the repositories lists
-</strong><strong>sudo zypper ar -f  https://raw.githubusercontent.com/jimed-rand/waydroid-obs-repo/refs/heads/main/repo/slowroll/jim-waydroid.repo
-</strong><strong>sudo zypper refresh --gpg-auto-import-keys
+</strong><strong>sudo zypper ar -f  https://raw.githubusercontent.com/jimed-rand/waydroid-obs-repo/refs/heads/main/repo/slowroll/jim-waydroid.repo &#x26;&#x26; sudo zypper ref
 </strong><strong>
 </strong># Add the repositories for Leap 16.0 and refresh the repositories lists
-sudo zypper ar -f  https://raw.githubusercontent.com/jimed-rand/waydroid-obs-repo/refs/heads/main/repo/leap-16.0/jim-waydroid.repo
-sudo zypper refresh --gpg-auto-import-keys
+sudo zypper ar -f  https://raw.githubusercontent.com/jimed-rand/waydroid-obs-repo/refs/heads/main/repo/leap-16.0/jim-waydroid.repo &#x26;&#x26; sudo zypper ref
 </code></pre>
+
+After you refresh it, you might see this. Just respond with type "a", which means trust always. After that, Zypper won't ask you to trust the key again until the key expires. If they're asking it again, just respond with type "a".
+
+<figure><img src="../.gitbook/assets/Jepretan layar_20250624_051413.png" alt=""><figcaption><p>Asking for adding the repo key as "trusted" or not</p></figcaption></figure>
 
 ## Installing Waydroid
 
@@ -110,7 +111,7 @@ sudo nano /etc/apparmor.d/usr.sbin.dnsmasq
 <strong>  @{run}/waydroid-lxc/* rw,
 </strong></code></pre>
 
-After that, save it. Also, make sure you have followed the installation entirely, and Waydroid has been installed with the check app menu. After checking and it's installed correctly, congrats! You should restart your PC/laptop after following this installation step to make Waydroid work on your system.
+After that, save it. Also, make sure you have followed the installation entirely, and Waydroid has been installed with the check app menu. After checking, and it's installed correctly, congrats! You should restart your PC/laptop after following this installation step to make Waydroid work on your system.
 
 ## Applying firewall rules for Internet access inside Waydroid
 

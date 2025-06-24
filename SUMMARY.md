@@ -4,7 +4,11 @@
 
 ## Installation
 
-* [Installation on Tumbleweed, Slowroll, and Leap 16.0](installation/installation-on-tumbleweed-slowroll-and-leap-16.0.md)
+* [Installation](installation/installation.md)
+
+***
+
+* [Uninstallation](uninstallation.md)
 
 ## Usages
 
